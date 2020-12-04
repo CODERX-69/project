@@ -1,0 +1,12 @@
+@app.route('/add_data')
+def add():
+    mongo.db.users.insert({'fname':'Sejal', 'lname':'Yeola' })
+    return "data inserted"
+
+@app.route('/view_data')    
+def view_data():
+    user = mongo.db.users.find_one({'fname':'Sejal'})
+    
+   
+
+    return user['fname'] 

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Articles</h1>
+    <hr>
+
+    {% for article in articles %}
+    <a href="{{url_for('view_article',article_id=article.article_id)}}">{{loop.index}} . {{article.title}}</a>
+    
+    <br>
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

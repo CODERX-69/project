@@ -1,0 +1,126 @@
+ {% extends "layout.html" %}
+ {% block body %}
+  
+ <div class="container">
+ <h1>Home page</h1> 
+ <hr> 
+</div>
+
+<div class="container">
+ {% include "includes/messages.html"  %}
+<div class="row">
+  <div class="col">
+    <div class = "container">
+      <div class="jumbotron">
+       <h1 class="display-4">Hello, 
+         {% if 'fname' in session %}
+         {{session.fname}}!
+         {% else %}
+         Guest!
+         {% endif %}
+       </h1>
+       <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+       <hr class="my-4">
+       <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      {% if 'email' in session %}
+       <a class="btn btn-primary btn-lg" href="{{url_for('articles')}}" role="button">Explore articles</a>
+     
+       {% else %}
+       <a class="btn btn-primary btn-lg" href="{{url_for('login')}}" role="button">Login</a>
+       <a class="btn btn-primary btn-lg" href="{{url_for('signup')}}" role="button">Signup</a>
+     
+       {% endif %}
+     
+     
+     
+     
+      </div>
+     </div>
+  </div>
+  
+  <div class="col">  
+    <style>
+     
+      .profile{
+        font-family:sans-serif;
+        text-align:center;
+        max-width:250px;
+        max-block-size: 600px ;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding:20px;
+      }
+  
+      .profile__image{
+        width: 150px;
+        height:150px;
+        object-fit:cover;
+        border-radius:15%;
+        margin:0 auto 20px auto;
+        display:block;
+        align-items: right;
+      }   
+  
+      .profile__name{
+        font-size: 1.2em;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+           
+      }      
+  
+      .profile__email{
+        display: flex;
+        align-items: center;
+        justify-content:center;
+           
+  
+      }      
+  
+      
+  
+  
+  
+    </style>
+
+  </head>
+
+  <body style="background-color:aliceblue">
+    <div style="width:800px; margin:0 auto;">
+    <div class="profile"> {% if 'pro_pic' in session %}
+      <img src="{{url_for('static',filename=session.pro_pic)}}" alt="pi" class="profile__image">
+      <a href="{{url_for('profile')}}"><i class="material-icons">add_a_photo</i></a>  
+      {% else %}
+      <img src="/static/default.jpg" alt="" class="profile__image">
+      <a href="{{url_for('profile')}}"><i class="material-icons">add_a_photo</i></a>
+      {% endif %}
+      <div class="profile__name">
+        <i class="material-icons">person</i> {% if 'fname' in session %}
+        {{session.fname}} {{session.lname}}
+        {% else %}
+        Name
+        {% endif %}
+    
+      </div>
+      <br>
+      <div class="profile__email">
+        <i class="material-icons">account_circle</i> {% if 'email' in session  %} 
+        {{session.email}}
+        {% else %}
+        Email
+        {% endif %}
+      
+      </div>
+      
+    </div>
+    </div> 
+  
+  </body>  
+  </div>
+
+</div>
+</div> 
+
+ {% endblock %}
+
+

@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<div class="container">
+  {% include 'includes/messages.html' %}
+  <h1>Profile</h1>
+  <hr>  
+
+    <div class="row">
+
+      <div class="col">
+        <form action= "/profile" method = "POST">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputemailid4">First Name</label>
+              <input type="text" value="{{session.fname}}"  name="First_name" class="form-control" id="inputemailid4">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputpassword4">Last Name</label>
+              <input type="text" value="{{session.lname}}" name="Last_name" class="form-control" id="inputpassword4">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input type="email" value="{{session.email}}" name="Email" class="form-control" id="inputEmail4">
+            </div>
+         </div>
+         <button type="submit" class="btn btn-primary">update profile</button>
+          </form>
+      </div>
+
+
+      <div class="col">
+       <form action="/update_picture" method="POST" enctype="multipart/form-data">
+
+          <img width="200" height="200" src="{{url_for('static',filename=session.pro_pic)}}" alt="">
+          <br>
+          <br>
+
+          <input name="photo" type="file" >
+          <br>
+          <br>  
+
+          <button type="submit">upload</button>
+       </form>
+      </div>
+    </div>
+
+    
+</div>
+
+       
+
+{% endblock %}

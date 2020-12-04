@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+
+
+{% block body %}
+
+<div class="container" >
+    <h1>Article Name</h1>
+    <p>Created at: {{article.created_at}} 
+    <br>
+    By  {{article.owner.name}}</p>
+    <hr>
+    {{article.content}}
+
+
+</div>
+{% endblock %}
